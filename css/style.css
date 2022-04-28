@@ -1,0 +1,80 @@
+.container{
+    width: 70%;
+    margin: 10px 15%;
+}
+.employee{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    justify-content: space-between;
+}
+.card{
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.card-hr{
+    width: 15%;
+    height: 1px;
+    border-radius: 5px;
+    background-color: rgb(54, 176, 62);
+}
+.image img{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    z-index: -1;
+}
+.image{
+    height: 200px;
+}
+.title{
+    width: calc(100% - 40px);
+    padding: 5px 20px;
+    text-align: center;
+}
+.status{
+    position: relative;
+    z-index: 0;
+    left: 10px;
+    top: -190px;
+    font-size: 12px;
+    float: left;
+}
+.status-span{
+    width: auto;
+    text-transform: capitalize;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    background-color: rgb(54, 176, 62);
+}
+
+@media (max-width: 1024px) { 
+    .employee{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .container{
+        width: 80%;
+        margin: 10px 10%;
+    }
+}
+@media (max-width: 800px) {
+    .employee{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .employee{
+        grid-template-columns: 1fr;
+    }
+    .container{
+        width: 70%;
+        margin: 10px 15%;
+    }
+}

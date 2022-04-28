@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/dropdown.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    </head>
+<body>
+    
+    <div class="container">
+        <div id="filetr" class="filter">
+            <div class="dropdown">
+                <button class="dropbtn">Select
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                    <button class="btn" onclick="filterSelection('recommended')"> Recommended</button>
+                    <button class="btn" onclick="filterSelection('saleout')"> Saleout</button>
+                    <button class="btn" onclick="filterSelection('bestseller')"> Bestseller</button>
+                    <button class="btn" onclick="filterSelection('promotion')"> Promotion</button>
+                    <button class="btn" onclick="filterSelection('new')"> New</button>
+                </div>
+            </div>
+        </div>
+        <div id="employee" class="employee">
+
+        </div>
+    </div>
+
+
+    <script src="./js/index.js"></script>
+    <script src="./js/dropdown.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.getJSON('products.json', function(data){
+                var employee_data = '';
+                $.each(data, function(key, value){
+                    employee_data += '<div class="card filterDiv all show '+value.prod_status+'">';
+                    employee_data += '<div class="image">';
+                        employee_data += '<img src=' +value.prod_img_src+ '>';
+                        if(value.prod_status != ""){
+                            employee_data += '<div class="status"><span class="status-span">'+value.prod_status+'</span></div>';
+                            
+                        }
+                    employee_data += '</div>';
+                    employee_data += '<h4 class="title">' +value.prod_name+ '</h4>';
+                    employee_data += '<hr class="card-hr">';
+                    employee_data += '<h4 class="price">' +value.prod_price+ ' zl.</h4>';
+                    employee_data += '</div>';
+                });
+                $('#employee').append(employee_data);
+            });
+        });
+    </script>
+</body>
+</html>
